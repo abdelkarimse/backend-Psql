@@ -8,8 +8,8 @@ Ce projet est conçu pour être facilement lancé et configuré sur n'importe qu
 
 ```bash
 # Cloner le dépôt
-git clone <url-du-repo>
-cd <nom-du-repo>
+git clone https://github.com/abdelkarimse/backend-Psql
+cd  backend-Psql
 
 # Lancer avec Docker Compose (recommandé)
 docker-compose up --build
