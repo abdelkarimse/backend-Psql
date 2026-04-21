@@ -1,0 +1,28 @@
+# FastAPI and Web Framework
+fastapi==0.104.1
+uvicorn[standard]==0.24.0
+python-multipart==0.0.6
+
+# Oracle Database
+oracledb==2.1.2
+
+# Data Validation
+pydantic==2.5.0
+pydantic[email]==2.5.0
+
+# MQTT
+paho-mqtt==1.6.1
+
+# HTTP Requests
+requests==2.31.0
+
+# Environment Variables
+python-dotenv==1.0.0
+
+# Utilities
+python-dateutil==2.8.2
+
+# Testing (optional)
+pytest==7.4.3
+pytest-asyncio==0.21.1
+httpx==0.25.2

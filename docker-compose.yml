@@ -1,0 +1,34 @@
+version: '3.8'
+
+services:
+  # Oracle Database Free
+  oracle:
+    image: container-registry.oracle.com/database/free:latest
+    container_name: parking_oracle
+    environment:
+      - ORACLE_PWD=${ORACLE_PWD:-oracle_password123}
+      - ORACLE_CHARACTERSET=AL32UTF8
+    ports:
+      - "1521:1521"
+      - "5500:5500"  # Enterprise Manager Express
+    volumes:
+      - oracle_data:/opt/oracle/oradata
+      - ./database/schema.sql:/opt/oracle/scripts/setup/01_schema.sql
+    healthcheck:
+      test: ["CMD-SHELL", "echo 'SELECT 1 FROM DUAL;' | sqlplus -L SYSTEM/${ORACLE_PWD:-oracle_password123}@localhost:1521/FREEPDB1 | grep -q '1'"]
+      interval: 30s
+      timeout: 15s
+      retries: 20
+      start_period: 60s
+    shm_size: 2g
+    networks:
+      - parking_network
+
+
+
+volumes:
+  oracle_data:
+
+networks:
+  parking_network:
+    driver: bridge
